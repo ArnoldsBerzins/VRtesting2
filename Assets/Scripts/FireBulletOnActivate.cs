@@ -2,12 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
+using System;
+using JetBrains.Annotations;
 
 public class FireBulletOnActivate : MonoBehaviour
 {
     public GameObject bullet;
     public Transform spawnPoint;
     public float fireSpeed = 20;
+    static int shotBullets;
+    public Accuracy accuracyScript;
 
     // Start is called before the first frame update
     void Start()
@@ -16,17 +20,19 @@ public class FireBulletOnActivate : MonoBehaviour
         grabbable.activated.AddListener(FireBullet);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void FireBullet(ActivateEventArgs arg)
     {
         GameObject spawnedBullet = Instantiate(bullet);
         spawnedBullet.transform.position = spawnPoint.position;
         spawnedBullet.GetComponent<Rigidbody>().velocity = spawnPoint.forward * fireSpeed;
         Destroy(spawnedBullet, 5);
+        shotBullets++;
+
+    }
+
+    public void CalculateAccuracy(int targetsHit)
+    {
+        double accuracy = targetsHit * 100 / shotBullets;
+        accuracyScript.UpdateAccuracy(Math.Round(accuracy, 2));
     }
 }
