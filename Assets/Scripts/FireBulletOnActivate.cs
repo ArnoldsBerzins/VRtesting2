@@ -25,14 +25,17 @@ public class FireBulletOnActivate : MonoBehaviour
         GameObject spawnedBullet = Instantiate(bullet);
         spawnedBullet.transform.position = spawnPoint.position;
         spawnedBullet.GetComponent<Rigidbody>().velocity = spawnPoint.forward * fireSpeed;
-        Destroy(spawnedBullet, 5);
-        shotBullets++;
-
     }
 
-    public void CalculateAccuracy(int targetsHit)
+    public void CalculateAccuracySquare(int targetsHit)
     {
-        double accuracy = targetsHit * 100 / shotBullets;
-        accuracyScript.UpdateAccuracy(Math.Round(accuracy, 2));
+        double accuracy = targetsHit * 100 / DestroyOnCollision.shotBulletSquare;
+        accuracyScript.UpdateAccuracy1(Math.Round(accuracy, 2));
+    }
+
+    public void CalculateAccuracySphere(int targetsHit)
+    {
+        double accuracy2 = targetsHit * 100 / DestroyOnCollision.shotBulletSphere;
+        accuracyScript.UpdateAccuracy2(Math.Round(accuracy2, 2));
     }
 }

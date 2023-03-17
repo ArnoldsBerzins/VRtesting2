@@ -8,6 +8,10 @@ TagManager:
   - Right Hand
   - Target
   - Bullet
+  - SquareWall
+  - SphereWall
+  - Square
+  - Sphere
   layers:
   - Default
   - TransparentFX

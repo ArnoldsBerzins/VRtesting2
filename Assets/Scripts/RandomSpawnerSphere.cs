@@ -32,6 +32,6 @@ public class RandomSpawnerSphere : MonoBehaviour
     {
         targetsHit = targetsHit + 1;
         changeTextScript.updateScore(targetsHit);
-        fireBulletOnActivateScript.CalculateAccuracy(targetsHit);
+        fireBulletOnActivateScript.CalculateAccuracySphere(targetsHit);
     }
 }
