@@ -12,6 +12,7 @@ public class FireBulletOnActivate : MonoBehaviour
     public float fireSpeed = 20;
     static int shotBullets;
     public Accuracy accuracyScript;
+    public SoundEffect fireSE;
 
     // Start is called before the first frame update
     void Start()
@@ -25,6 +26,7 @@ public class FireBulletOnActivate : MonoBehaviour
         GameObject spawnedBullet = Instantiate(bullet);
         spawnedBullet.transform.position = spawnPoint.position;
         spawnedBullet.GetComponent<Rigidbody>().velocity = spawnPoint.forward * fireSpeed;
+        AudioManager.instance.PlayClipOnce(fireSE, this.gameObject);
     }
 
     public void CalculateAccuracySquare(int targetsHit)

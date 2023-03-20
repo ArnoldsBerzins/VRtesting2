@@ -12,6 +12,7 @@ TagManager:
   - SphereWall
   - Square
   - Sphere
+  - Pistol
   layers:
   - Default
   - TransparentFX
@@ -21,9 +22,9 @@ TagManager:
   - UI
   - Player
   - Interactables
-  - 
-  - 
-  - 
+  - Target
+  - Bullet
+  - Pistol
   - 
   - 
   - 
