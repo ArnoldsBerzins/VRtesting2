@@ -10,6 +10,8 @@ public class RandomSpawnerSphere2 : MonoBehaviour
     public ChangeText changeTextScript;
     public FireBulletOnActivate fireBulletOnActivateScript;
     public MovingTargets script;
+    public RandomSpawnerSphere randomSpawnerSphereScript;
+
     private void Start()
     {
         script = GetComponent<MovingTargets>();
@@ -19,19 +21,11 @@ public class RandomSpawnerSphere2 : MonoBehaviour
     {
         if (collision.collider.CompareTag("Bullet"))
         {
-            Vector3 randomSpawnPosition = new Vector3(Random.Range(-4, 5), 3, -5);
-            Destroy(this.gameObject);
+            Vector3 randomSpawnPosition = new Vector3(Random.Range(1, 9), 2, -93);
+            gameObject.transform.position = randomSpawnPosition;
             script.enabled = true;
-            Instantiate(targetPrefab, randomSpawnPosition, Quaternion.identity);
-            AddScore();
+            randomSpawnerSphereScript.AddScore();
             gameObject.SetActive(true);
         }
-    }
-
-    public void AddScore()
-    {
-        targetsHit = targetsHit + 1;
-        changeTextScript.updateScore(targetsHit);
-        fireBulletOnActivateScript.CalculateAccuracySphere(targetsHit);
     }
 }

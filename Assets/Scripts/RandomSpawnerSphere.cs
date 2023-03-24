@@ -19,10 +19,9 @@ public class RandomSpawnerSphere : MonoBehaviour
     {
         if (collision.collider.CompareTag("Bullet"))
         {
-            Vector3 randomSpawnPosition = new Vector3(Random.Range(-4, 5), 2, -5);
-            Destroy(this.gameObject);
+            Vector3 randomSpawnPosition = new Vector3(Random.Range(1, 9), 4, -93);
+            gameObject.transform.position = randomSpawnPosition;
             script.enabled = true;
-            Instantiate(targetPrefab, randomSpawnPosition, Quaternion.identity);
             AddScore();
             gameObject.SetActive(true);
         }
@@ -30,7 +29,7 @@ public class RandomSpawnerSphere : MonoBehaviour
 
     public void AddScore()
     {
-        targetsHit = targetsHit + 1;
+        targetsHit++;
         changeTextScript.updateScore(targetsHit);
         fireBulletOnActivateScript.CalculateAccuracySphere(targetsHit);
     }

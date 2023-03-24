@@ -25,6 +25,6 @@ public class RandomSpawner : MonoBehaviour
     {
         targetsHit = targetsHit + 1;
         changeTextScript.updateScore(targetsHit);
-        fireBulletOnActivateScript.CalculateAccuracySquare(targetsHit);
+        //fireBulletOnActivateScript.CalculateAccuracySquare(targetsHit);
     }
 }

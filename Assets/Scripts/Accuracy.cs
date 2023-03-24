@@ -6,22 +6,16 @@ using UnityEngine.UI;
 public class Accuracy : MonoBehaviour
 {
     public GameObject pistol;
-    public Text currentAccuracy1;
-    public Text currentAccuracy2;
+    public Text currentAccuracy;
 
     // Start is called before the first frame update
     void Start()
     {
-        currentAccuracy1.text = "Accuracy: 100%";
-        currentAccuracy2.text = "Accuracy: 100%";
+        currentAccuracy.text = "Accuracy: 100%";
     }
 
-    public void UpdateAccuracy1(double accuracy)
+    public void UpdateAccuracy(double accuracy)
     {
-        currentAccuracy1.text = "Accuracy: " + accuracy.ToString() + "%";
-    }
-    public void UpdateAccuracy2(double accuracy)
-    {
-        currentAccuracy2.text = "Accuracy: " + accuracy.ToString() + "%";
+        currentAccuracy.text = "Accuracy: " + accuracy.ToString() + "%";
     }
 }

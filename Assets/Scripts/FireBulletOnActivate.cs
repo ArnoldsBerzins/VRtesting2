@@ -4,13 +4,14 @@ using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 using System;
 using JetBrains.Annotations;
+using Newtonsoft.Json.Bson;
+using UnityEngine.InputSystem;
 
 public class FireBulletOnActivate : MonoBehaviour
 {
     public GameObject bullet;
     public Transform spawnPoint;
     public float fireSpeed = 20;
-    static int shotBullets;
     public Accuracy accuracyScript;
     public SoundEffect fireSE;
 
@@ -28,16 +29,9 @@ public class FireBulletOnActivate : MonoBehaviour
         spawnedBullet.GetComponent<Rigidbody>().velocity = spawnPoint.forward * fireSpeed;
         AudioManager.instance.PlayClipOnce(fireSE, this.gameObject);
     }
-
-    public void CalculateAccuracySquare(int targetsHit)
-    {
-        double accuracy = targetsHit * 100 / DestroyOnCollision.shotBulletSquare;
-        accuracyScript.UpdateAccuracy1(Math.Round(accuracy, 2));
-    }
-
     public void CalculateAccuracySphere(int targetsHit)
     {
-        double accuracy2 = targetsHit * 100 / DestroyOnCollision.shotBulletSphere;
-        accuracyScript.UpdateAccuracy2(Math.Round(accuracy2, 2));
+        double accuracy = targetsHit * 100 / DestroyOnCollision.shotBulletSquare;
+        accuracyScript.UpdateAccuracy(Math.Round(accuracy, 2));
     }
 }
